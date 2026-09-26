@@ -22,7 +22,7 @@ targets:
       path: Info.plist
     settings:
       base:
-        PRODUCT_NAME: "CS2租伴"
+        PRODUCT_NAME: CS2RentalCalc
         PRODUCT_BUNDLE_IDENTIFIER: com.whangvjfx.cs2rental
         INFOPLIST_FILE: Info.plist
         GENERATE_INFOPLIST: "NO"

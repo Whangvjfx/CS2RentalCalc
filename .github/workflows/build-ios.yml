@@ -59,7 +59,9 @@ jobs:
       - name: Package Payload to IPA
         run: |
           mkdir -p Payload
-          cp -r build/Build/Products/Release-iphoneos/CS2RentalCalc.app Payload/
+          APP_PATH=$(find build/Build/Products/Release-iphoneos -name "*.app" -maxdepth 1 | head -n 1)
+          echo "Found app at: $APP_PATH"
+          cp -r "$APP_PATH" Payload/CS2RentalCalc.app
           python3 -c "import plistlib; p='Payload/CS2RentalCalc.app/Info.plist'; d=plistlib.load(open(p,'rb')); d['UILaunchStoryboardName']='LaunchScreen'; d['UILaunchScreen']={}; plistlib.dump(d,open(p,'wb')); print('Verified Info.plist launch screen keys:', d.get('UILaunchStoryboardName'), d.get('UILaunchScreen'))"
           zip -r CS2RentalCalc.ipa Payload
           ls -lh CS2RentalCalc.ipa
